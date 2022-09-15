@@ -53,7 +53,13 @@
              :with-creator t         ;; Include Emacs and Org vesion in footer
              :with-toc nil           ;; Don't include table of contents
              :section-numbers nil    ;; Don't include section numbers
-             :time-stamp-file nil))) ;; Don't include time stamp of file publish
+             :time-stamp-file nil) ;; Don't include time stamp of file publish
+       (list "personal-site-assets"
+             :recursive t
+             :base-directory "./content"
+             :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+             :publishing-directory "./public"
+             :publishing-function 'org-publish-attachment)))
 
 ;; Generate the site output
 (org-publish-all t)
