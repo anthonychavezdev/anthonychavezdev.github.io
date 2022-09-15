@@ -1,3 +1,16 @@
+;; Set up packages
+(require 'package)
+(setq package-user-dir (expand-file-name "./packages"))
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+;; Initialize package system
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; Install dependencies
+(package-install 'htmlize)
+
 ;; Load the publishing system
 (require 'ox-publish)
 
