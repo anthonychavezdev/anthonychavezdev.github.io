@@ -61,17 +61,17 @@
 
     Here's the Stack so far:
 
-    | -------------- |
-    | Stack          |
-    | -------------- |
-    | Parameter #N   |
-    | -------------- |
-    | Parameter 2    |
-    | -------------- |
-    | Parameter 1    |
-    | -------------- |
-    | Return Address | <--- (%esp)
-    |----------------|
+    |-----------------------------|
+    | Stack                       |
+    |-----------------------------|
+    | Parameter #N                |
+    |-----------------------------|
+    | Parameter 2                 |
+    |-----------------------------|
+    | Parameter 1                 |
+    |-----------------------------|
+    | Return Address  <--- (%esp) |
+    |-----------------------------|
 
     The function still has some work to do:
     - Save the current base pointer register (=%ebp=) onto the stack.
@@ -87,19 +87,20 @@
 
       The stack now looks like this:
       
-    | -------------- |
-    | Stack          |
-    | -------------- |
-    | Parameter #N   | <--- N*4+4(%ebp)
-    | -------------- |
-    | Parameter 2    | <--- 12(%ebp)
-    | -------------- |
-    | Parameter 1    | <--- 8(%ebp)
-    | -------------- |
-    | Return Address | <--- 4(%ebp)
-    | -------------- |
-    | Old %ebp       | <--- (%esp) and (%ebp)
-    |----------------|
+    |----------------------------------------|
+    | Stack                                  |
+    |----------------------------------------|
+    | Parameter #N    <--- N*4+4(%ebp)       |
+    |----------------------------------------|
+    | Parameter 2     <--- 12(%ebp)          |
+    |----------------------------------------|
+    | Parameter 1     <--- 8(%ebp)           |
+    |----------------------------------------|
+    | Return Address  <--- 4(%ebp)           |
+    |----------------------------------------|
+    | Old %ebp        <--- (%esp) and (%ebp) |
+    |----------------------------------------|
+
 
     The function then reserves space on the stack for any local variables.
     This is done by moving the stack pointer down a certain number of bytes.
@@ -111,21 +112,23 @@
 
     The stack now looks like this:
     
-    | --------------   |
-    | Stack            |
-    | --------------   |
-    | Parameter #N     | <--- N*4+4(%ebp)
-    | --------------   |
-    | Parameter 2      | <--- 12(%ebp)
-    | --------------   |
-    | Parameter 1      | <--- 8(%ebp)
-    | --------------   |
-    | Return Address   | <--- 4(%ebp)
-    | --------------   |
-    | Old %ebp         | <--- (%ebp)
-    |------------------|
-    | Local Variable 1 | <--- -4(%ebp)
-    | Local Variable 2 | <--- -8(%ebp) and (%esp)
+    |--------------------------------------------|
+    | Stack                                      |
+    |--------------------------------------------|
+    | Parameter #N      <--- N*4+4(%ebp)         |
+    |--------------------------------------------|
+    | Parameter 2       <--- 12(%ebp)            |
+    |--------------------------------------------|
+    | Parameter 1       <--- 8(%ebp)             |
+    |--------------------------------------------|
+    | Return Address    <--- 4(%ebp)             |
+    |--------------------------------------------|
+    | Old %ebp          <--- (%ebp)              |
+    |--------------------------------------------|
+    | Local Variable 1  <--- -4(%ebp)            |
+    | Local Variable 2  <--- -8(%ebp) and (%esp) |
+    |--------------------------------------------|
+
 
     All the data can be accessed using =base pointer addressing=, and using different
     offsets from =%ebp=.
@@ -154,37 +157,41 @@ Let's look at this visually.
 
 ~movl %ebp, %esp~:
 
-    | --------------   |
-    | Stack            |
-    | --------------   |
-    | Parameter #N     | <--- N*4+4(%ebp)
-    | --------------   |
-    | Parameter 2      | <--- 12(%ebp)
-    | --------------   |
-    | Parameter 1      | <--- 8(%ebp)
-    | --------------   |
-    | Return Address   | <--- 4(%ebp)
-    | --------------   |
-    | Old %ebp         | <--- (%ebp) and (%esp)
-    |------------------|
-    | Local Variable 1 | <--- -4(%ebp)
-    | Local Variable 2 | <--- -8(%ebp)
+    |------------------------------------------|
+    | Stack                                    |
+    |------------------------------------------|
+    | Parameter #N      <--- N*4+4(%ebp)       |
+    |------------------------------------------|
+    | Parameter 2       <--- 12(%ebp)          |
+    |------------------------------------------|
+    | Parameter 1       <--- 8(%ebp)           |
+    |------------------------------------------|
+    | Return Address    <--- 4(%ebp)           |
+    |------------------------------------------|
+    | Old %ebp          <--- (%ebp) and (%esp) |
+    |------------------------------------------|
+    | Local Variable 1  <--- -4(%ebp)          |
+    | Local Variable 2  <--- -8(%ebp)          |
+    |------------------------------------------|
+
 
 ~popl %ebp~:
 
-    | --------------   |
-    | Stack            |
-    | --------------   |
-    | Parameter #N     |
-    | --------------   |
-    | Parameter 2      |
-    | --------------   |
-    | Parameter 1      |
-    | --------------   |
-    | Return Address   | <--- (%esp)
-    | --------------   | 
-    | Local Variable 1 |
-    | Local Variable 2 |
+    |-------------------------------|
+    | Stack                         |
+    |-------------------------------|
+    | Parameter #N                  |
+    |-------------------------------|
+    | Parameter 2                   |
+    |-------------------------------|
+    | Parameter 1                   |
+    |-------------------------------|
+    | Return Address    <--- (%esp) |
+    |-------------------------------|
+    | Local Variable 1              |
+    | Local Variable 2              |
+    |-------------------------------|
+
 
 Here, the =Old %ebp= value that was on the stack is popped, and placed back into =%ebp=.
 And since we ran ~popl~, =%esp= now points to the return address. We can finally execute the ~ret~
