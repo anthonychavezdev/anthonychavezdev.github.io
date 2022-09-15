@@ -1,5 +1,8 @@
 ;; Load the publishing system
 (require 'ox-publish)
+
+(setq org-html-validation-link nil)
+
 ;; Define the publishing project
 (setq org-publish-project-alist
       (list
