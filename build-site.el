@@ -39,9 +39,12 @@
               </nav>
               <h1>%t</h1>
              "
+             :email "anthony@anthonychavez.xyz"
              :html-postamble
              "
               Created with: %c
+              <br/>
+              Contact me: %e
              "
              :html-doctype "html5"
              :html-html5-fancy t
