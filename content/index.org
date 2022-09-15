@@ -1,6 +1,8 @@
 #+title: Anthony Chavez
 
 * About me
+  [[file:assets/bitmoji-closed-smile.png]]
+
   My name is Anthony, I am a 23 year old college graduate with a bachelors in Computer Science.
   I loves computers, programming, rock climbing, anime, and astronomy.
   I think it's all interesting. I created this site to practice web development, store information on
@@ -9,5 +11,5 @@
   me.
 
 * Links
-  - [[https:github.com/anthonychavezdev][GitHub]]
-  - [[https://twitter.com/achavezdev][Twitter]]
+  @@html: <a href="https:github.com/anthonychavezdev" style="font-size: 3rem; text-decoration: none;" class="fa fa-github"></a>@@
+  @@html: <a href="https://twitter.com/achavezdev" style="font-size: 3rem; text-decoration: none;" class="fa fa-twitter"></a>@@

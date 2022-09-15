@@ -1,0 +1,77 @@
+#+TITLE: Projects
+
+* Computing
+** Emulation
+   #+begin_export html
+   <details>
+     <summary>Chip8</summary>
+     <p>
+     I wrote a Chip 8 emulator in C that
+     can play Chip 8 ROMS, draw graphics to
+     the screen, and read keyboard input.
+     The only feature it's lacking, is sound.
+
+     <a href="https://github.com/anthonychavezdev/chip8">GitHub</a>
+     </p>
+   </details>
+   #+end_export
+** Raspberry Pi
+   #+begin_export html
+   <details>
+     <summary>Nextcloud instance</summary>
+     <p>
+     A Google Drive like program that I set
+     up at home to sync my documents, pictues,
+     contacts, and anything else I might want
+     to sync with it. I have full control
+     over it.
+     </p>
+   </details>
+   <details>
+     <summary>Remotely Controlled Car</summary>
+     <p>
+     A car I built using parts from the GopiGo
+     project. It can be controlled via a
+     bluetooth controller and can stream
+     video as well, through a local web server
+     running on it.
+
+     <a href="https://gitlab.com/anthonychavez/Gopigo">GitLab</a>
+     </p>
+     <img src="../assets/GoPiGo.jpg">
+   </details>
+   #+end_export
+** Video Games
+   #+begin_export html
+   <details>
+     <summary>Pypong</summary>
+     <p>
+     A pong clone written in Python and Pygame.
+
+     <a href="https://gitlab.com/anthonychavez/Pypong">GitLab</a>
+     </p>
+     <img src="../assets/Pypong.png">
+   </details>
+   <details>
+     <summary>Grab Some Cake</summary>
+     <p>
+     A very simple game where you have to
+     platform your way through simple levels
+     to grab a slice of cake.
+     </p>
+   </details>
+   #+end_export
+** Web Development
+   #+begin_export html
+   <details>
+     <summary>Original Personal Site</summary>
+     <p>
+     I made a personal site for myself which
+     contains links to my project, a blog that
+     I had started but discontinued, and
+     information on the tools I use on a
+     daily basis.
+     <a href="https://gitlab.com/anthonychavez/site">GitLab</a>
+     </p>
+   </details>
+   #+end_export

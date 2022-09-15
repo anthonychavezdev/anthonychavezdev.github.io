@@ -18,7 +18,11 @@
 (setq org-html-validation-link nil              ;; Don't show validation link
       org-html-head-include-scripts nil         ;; Use custom scripts
       org-html-head-include-default-style nil   ;; Use custom styles
-      org-html-head "<link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\""
+      org-html-head
+      "
+      <link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" />
+      <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />
+      "
       org-html-divs '((preamble "header" "")
                       (content "main" "")
                       (postamble "footer" "")))
@@ -36,6 +40,7 @@
               <nav>
                   <a href=\"/\">Home</a>
                   <a href=\"/Notes/\">Notes</a>
+                  <a href=\"/Projects/\">Projects</a>
               </nav>
               <h1>%t</h1>
              "
