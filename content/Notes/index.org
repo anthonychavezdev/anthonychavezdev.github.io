@@ -1,2 +1,4 @@
-* Notes
+#+TITLE: Notes
+
+* Computing
   - [[file:Assembly/Notes.org][Assembly]]
