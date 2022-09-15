@@ -7,6 +7,7 @@
   various projects, information, as well as to have a place to point any future employers to.
   Here you can find information about me like interests, projects, and information on how to contact
   me.
+
 * Links
   - [[https:github.com/anthonychavezdev][GitHub]]
   - [[https://twitter.com/achavezdev][Twitter]]

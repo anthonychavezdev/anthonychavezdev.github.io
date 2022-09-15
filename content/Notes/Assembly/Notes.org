@@ -1,0 +1,193 @@
+#+TITLE: x86 Assembly Notes
+#+AUTHOR: Anthony
+
+* Data Accessing methods
+*** Immediate Mode
+  The data to access is embedded in the instruction.
+  Example:
+  ~movl $0 %eax~ <--- Move the literal number zero into register =eax=
+*** register addressing mode
+  The instruction contains a register to access
+*** Memory Access Modes
+**** Direct Addressing Mode
+     The instruction contains the memory address to access.
+     Example:
+     ~movl 202 %eax~ <--- word starting at address 202 into register =eax=
+**** Indexed Addressing Mode
+     Like =Direct Addressing Mode=, where an address is given, but an index register
+     is also specified to offset the address.
+     *On x86 processors, you can also specify a multiplier*
+**** Indirect Addressing Mode
+     The instruction contains a register that holds a memory address to access.
+     Example:
+     ~movl (%esp) %eax~ <--- Grabs the data at the memory address held in =esp=
+**** Base Pointer Addressing Mode
+     Like =Indirect Addressing Mode=, but with an offset also given.
+     Example:
+     ~movl 4(%esp) %eax~ <--- Adds 4 to the address in =esp= then fetches that data in memory.
+* Calling Convention
+  The way variables are stored, parameters are passed, and return values are transferred.
+  This varies from language to language.
+  One can use any calling convention when programming in Assembly.
+  The programmer can even come up with their own calling convention
+
+  *Linux uses the C calling conventions*
+** interoperability
+   Other languages can have interoperability with assembly functions.
+   In order for this to work though, the language's calling convention
+   has to be used with the Assembly functions.
+
+* C calling convention
+  In the C calling convention, the =stack= is used heavily to hold function information.
+  The =stack= holds:
+  - local variables
+  - parameters
+  - return address
+** The Stack
+   The stack lives at the very top addresses of memory, and grows down
+   Things can be pushed onto the stack with ~pushl~ and ~popl~, where "l" is presumably for "long"
+*** Stack registers
+    - =%esp=: holds a pointer to the top of the stack, starting at the highest address
+*** Pushing and popping
+    When we push onto the stack, =%esp= gets subtracted by 4 (stack grows down)
+    When we pop from the stack, =%esp= gets added by 4
+*** Calling functions
+    Before executing a function, all the parameters are pushed onto the stack
+    in reverse order. 
+    Afterwards, The call instruction is issued which indicates which function
+    will be executed, the address of the next instruction is pushed onto the
+    stack (the return address), and the instruction pointer (=%eip=) is modified
+    to point to the start of the function.
+
+    Here's the Stack so far:
+
+    | -------------- |
+    | Stack          |
+    | -------------- |
+    | Parameter #N   |
+    | -------------- |
+    | Parameter 2    |
+    | -------------- |
+    | Parameter 1    |
+    | -------------- |
+    | Return Address | <--- (%esp)
+    |----------------|
+
+    The function still has some work to do:
+    - Save the current base pointer register (=%ebp=) onto the stack.
+      The =%ebp= register is used to access parameters and local variables.
+      We don't want to overwrite it if there was something previously there, so
+      it gets "backed up" somewhere else.
+    - Copy the stack pointer to =%ebp= (~movl %esp %ebp~)
+      This lets you use the base pointer as a sort of index to access the parameters.
+      Using the stack pointer isn't recommended, as the stack may change as things are
+      pushed and popped onto it (Like pushing arguments to other functions).
+      Copying the stack pointer at the start of every function makes it so you always know
+      where your function parameters are (As well as local variables).
+
+      The stack now looks like this:
+      
+    | -------------- |
+    | Stack          |
+    | -------------- |
+    | Parameter #N   | <--- N*4+4(%ebp)
+    | -------------- |
+    | Parameter 2    | <--- 12(%ebp)
+    | -------------- |
+    | Parameter 1    | <--- 8(%ebp)
+    | -------------- |
+    | Return Address | <--- 4(%ebp)
+    | -------------- |
+    | Old %ebp       | <--- (%esp) and (%ebp)
+    |----------------|
+
+    The function then reserves space on the stack for any local variables.
+    This is done by moving the stack pointer down a certain number of bytes.
+    Let's say we wanted to reserve 8 bytes for local variables.
+    We can do that by just ~subl $8 %esp~.
+    This is done so we don't have to worry about clobbering them with pushes for
+    function calls.
+    **All of this is being done on the function's stack frame, so when it returns, all the variables will cease to exist**
+
+    The stack now looks like this:
+    
+    | --------------   |
+    | Stack            |
+    | --------------   |
+    | Parameter #N     | <--- N*4+4(%ebp)
+    | --------------   |
+    | Parameter 2      | <--- 12(%ebp)
+    | --------------   |
+    | Parameter 1      | <--- 8(%ebp)
+    | --------------   |
+    | Return Address   | <--- 4(%ebp)
+    | --------------   |
+    | Old %ebp         | <--- (%ebp)
+    |------------------|
+    | Local Variable 1 | <--- -4(%ebp)
+    | Local Variable 2 | <--- -8(%ebp) and (%esp)
+
+    All the data can be accessed using =base pointer addressing=, and using different
+    offsets from =%ebp=.
+    =%ebp= *exists for this exact purpose*
+    Other registers can be used for =base pointer addressing=, but x86 architecture makes using
+    =%ebp= really fast.
+** returning from the function
+   When a function is done executing, it has to:
+   1. Store the return value in =%eax=.
+   2. Restore the stack to what it looked like previously
+   3. Return control back to wherever it was called from.
+      This is done using the ~ret~ instruction, which pops
+      whatever was at the top of the stack, and sets the =%eip=
+      register to that value (the address of the instruction after ~call~).
+  This all has to be done in that exact order for everything to work properly.
+  If the stack wasn't restored before ~ret~, ~ret~ wouldn't function properly.
+  
+  So to return, the following must be done:
+  #+begin_src asm
+    movl %ebp, %esp # Have the stack pointer (esp) point to where ebp is pointing
+    popl %ebp
+    ret
+  #+end_src
+You should consider all local variables inaccessible, as future stack pushes will overwrite them.
+Let's look at this visually.
+
+~movl %ebp, %esp~:
+
+    | --------------   |
+    | Stack            |
+    | --------------   |
+    | Parameter #N     | <--- N*4+4(%ebp)
+    | --------------   |
+    | Parameter 2      | <--- 12(%ebp)
+    | --------------   |
+    | Parameter 1      | <--- 8(%ebp)
+    | --------------   |
+    | Return Address   | <--- 4(%ebp)
+    | --------------   |
+    | Old %ebp         | <--- (%ebp) and (%esp)
+    |------------------|
+    | Local Variable 1 | <--- -4(%ebp)
+    | Local Variable 2 | <--- -8(%ebp)
+
+~popl %ebp~:
+
+    | --------------   |
+    | Stack            |
+    | --------------   |
+    | Parameter #N     |
+    | --------------   |
+    | Parameter 2      |
+    | --------------   |
+    | Parameter 1      |
+    | --------------   |
+    | Return Address   | <--- (%esp)
+    | --------------   | 
+    | Local Variable 1 |
+    | Local Variable 2 |
+
+Here, the =Old %ebp= value that was on the stack is popped, and placed back into =%ebp=.
+And since we ran ~popl~, =%esp= now points to the return address. We can finally execute the ~ret~
+instruction.
+
+*Once out of the function, the parameters need to be popped off*
