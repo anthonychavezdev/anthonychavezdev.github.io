@@ -39,6 +39,7 @@
              "
               <nav>
                   <a href=\"/\">Home</a>
+                  <a href=\"/contact.html\">Contact me</a>
                   <a href=\"/Notes/\">Notes</a>
                   <a href=\"/Projects/\">Projects</a>
               </nav>
@@ -48,8 +49,6 @@
              :html-postamble
              "
               Created with: %c
-              <br/>
-              Contact me: %e
              "
              :html-doctype "html5"
              :html-html5-fancy t
@@ -62,7 +61,7 @@
        (list "personal-site-assets"
              :recursive t
              :base-directory "./content"
-             :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+             :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|key"
              :publishing-directory "./public"
              :publishing-function 'org-publish-attachment)))
 

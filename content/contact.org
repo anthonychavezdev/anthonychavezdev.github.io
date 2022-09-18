@@ -1,0 +1,64 @@
+[[mailto:anthony@anthonychavez.xyz][anthony@anthonychavez.xyz]]
+
+* Sending me Encrypted emails
+  If you want to send me encrypted emails, you can find my public gpg key
+  and fingerprint below. You can copy my public key or download =anthonychavez.key= linked further down.
+
+  You can then import my key with:
+  #+begin_src sh
+    gpg --import anthonychavez.key
+  #+end_src
+  or whatever you named the file.
+
+  We'll have to exchange public keys. Export your public key with:
+  #+begin_src sh
+    gpg --export -a -o yourname.key you@email.com
+  #+end_src
+
+  Or generate a public and private key pair if you don't already have them.
+  #+begin_src sh
+    gpg --full-gen-key
+  #+end_src
+
+** GPG KEY
+   [[file:anthonychavez.key][anthonychavez.key]]
+   #+begin_export html
+   <pre>
+   -----BEGIN PGP PUBLIC KEY BLOCK-----
+
+   mQENBFqIpu4BCADWn8iEB+3u+G/6+oDbVfgdpiaegOFPfyNcH0hAbGMzjoA6dMzs
+   8fz7Q5IFcDGbDEj1PRHHEOuIIgb1yVH1/CApCpz1d5Z5EszQUzNI28+Jj94f/I4o
+   1iqrJlcI2n1h5N7g+sSkwJbxB5hjkmQ8OyidrZhxPlooFdf8wC7/AOQ5oEryKs7R
+   qEkewPhOQugbZOwMp9jc8XPH/vIrPk1YhOwF6cza/FHVgrAsZq9nLmujX2I2YXnh
+   W29RV+9+hQytNt2yxf6/oT9FndDfYCMdYcIWTd2SDZV6dHWzhlqjilDTmChBbJV+
+   IF4tX7IipDNJcwhG81FVpVDK3mnKZq/dohQ3ABEBAAG0KkFudGhvbnkgQ2hhdmV6
+   IDxhbnRob255QGFudGhvbnljaGF2ZXoueHl6PokBTgQTAQgAOBYhBOJpO8wYhLTJ
+   Dp5bHUVrjJrspXrSBQJaiKbuAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJ
+   EEVrjJrspXrSsvUIAIP5aODVtf/q/bGJBRoWGM2WG4yAVI1D5T12Aw07Pm3MDX1N
+   ygyWLrGSiKYcx7Dga32HQ/Yp1CwZbsOjQAH4iazKL1ZEGgoT/Plka6PfiwOQ9X3V
+   WPBnC41yMlBR5btA9AJFMS9LEreF6cee4UticmVGMnpmIHt8FSkJSyH9QyJZYMQr
+   mpPSUVgy1PdYefP89/+1cn7Gk7F2nNrm9zsRCJTo6Gje5oZ3Iue2j9sinMPiVn7F
+   jrxM3NloEAYZhDfYdySFhBTLAPhjzEUMDL/rjp+FeLPTcjHjpY7ijf41YPe4EqyV
+   IUV2KqMClgfy045+YDFd+a5IbrHmJCiDf/pZHvy5AQ0EWoim7gEIAMTIEvL7FH84
+   0PhwxE0L3NpnFLBYs7xtGm7D86qgTDv7kKm4Orjd8thn1y2kH947SJoVuQ6oNwJs
+   uOvmlU/PFhvXl1gwwVMV2Sqso8i9/7fRLGjUIZ5jCTL6vRg0XtC0CQqljGN9PfUk
+   xtIxGKhd3sBiJhxwDu8kyGwreZyFOP0Yu+MuTJRWMKfAtO6dZxxCBo759bQEdsH4
+   6QpQytDIN3NrETZ/OrPu0KllgpaCLRLwXY9BrHbkXha+qri04CNmJb8M08BAMoPV
+   Sc67GveVhczKQ7vX1jDVqAz090CriLOo/6k5XwAapcAN93BAWSYpZlis0cdJHDfp
+   5kc8Gib9fOMAEQEAAYkBNgQYAQgAIBYhBOJpO8wYhLTJDp5bHUVrjJrspXrSBQJa
+   iKbuAhsMAAoJEEVrjJrspXrSSmIH/R8NWTbXM0jOnWqiZ+nl1dufjSJmz06bVtHi
+   Umhid0vP/3Qjb3p9/+tP8/YU65pMSgshZLOKlmeo5N5Wa4hJynYDQOZe3nhE/wwb
+   CCUcVzuLS3+7fLqOqWcwoSN9rWLvfXRIZVg2flXY1E4XK41f3XPR+fwovGAptGsn
+   147vHQotqyoKqAXn19gcKcbo2fHaORAtdFWcDoCgiLwuo6aPZcsdWlD4xcGxRSen
+   7veOrekpWsxgLPpETkFedEfOlRAg40a/oLjFq5iAQnZRe1c98GJjxn1/Z7vj3/0w
+   6kmfL/aSwwAueWqoKBBaY3mcl6SHBXAxOHqbRlSsuZfhUKcoTDg=
+   =2TNd
+   -----END PGP PUBLIC KEY BLOCK-----
+   </pre>
+   #+end_export
+*** GPG fingerprint
+    #+begin_export html
+    <pre>
+    E269 3BCC 1884 B4C9 0E9E 5B1D 456B 8C9A ECA5 7AD2
+    </pre>
+    #+end_export
