@@ -11,5 +11,5 @@
   me.
 
 * Links
-  @@html: <a href="https:github.com/anthonychavezdev" style="font-size: 3rem; text-decoration: none;" class="fa fa-github"></a>@@
+  @@html: <a href="https://github.com/anthonychavezdev" style="font-size: 3rem; text-decoration: none;" class="fa fa-github"></a>@@
   @@html: <a href="https://twitter.com/achavezdev" style="font-size: 3rem; text-decoration: none;" class="fa fa-twitter"></a>@@
