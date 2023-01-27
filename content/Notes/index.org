@@ -2,3 +2,4 @@
 
 * Computing
   - [[file:Assembly/Notes.org][Assembly]]
+  - [[file:Compiling-emacs/Notes.org][How I compile Emacs from source]]
