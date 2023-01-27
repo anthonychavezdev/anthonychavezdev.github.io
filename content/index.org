@@ -3,12 +3,9 @@
 * About me
   [[file:assets/bitmoji-closed-smile.png]]
 
-  My name is Anthony, I am a 23 year old college graduate with a bachelors in Computer Science.
-  I loves computers, programming, rock climbing, anime, and astronomy.
-  I think it's all interesting. I created this site to practice web development, store information on
-  various projects, information, as well as to have a place to point any future employers to.
-  Here you can find information about me like interests, projects, and information on how to contact
-  me.
+  My name is Anthony, I am a 24 year old college graduate with a bachelors in Computer Science.
+  I love computers, programming, rock climbing, anime, and astronomy.
+  I go hiking a few times a year with friends, I'm learning guitar, and I'm learning various technology stack
 
 * Links
   @@html: <a href="https://github.com/anthonychavezdev" style="font-size: 3rem; text-decoration: none;" class="fa fa-github"></a>@@
