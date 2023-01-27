@@ -1,0 +1,43 @@
+#+TITLE: How I Compile Emacs From Source
+#+AUTHOR: Anthony
+
+Since I'm a Linux user, this is how I compile Emacs on Linux.
+First I make sure I have git installed, then I clone the repo with:
+#+begin_src sh
+  git clone https://git.savannah.gnu.org/git/emacs.git && cd emacs
+#+end_src
+I then run
+#+begin_src sh
+  ./autogen.sh
+#+end_src
+to generate the configure script(s), then
+#+begin_src sh
+  ./configure --with-native-compilation \
+              --with-gnutls \
+              --with-imagemagick \
+              --with-jpeg \
+              --with-png \
+              --with-rsvg \
+              --with-tiff \
+              --with-wide-int \
+              --with-xft \
+              --with-xml2 \
+              --with-xpm \
+              --with-json \
+              --with-cairo \
+              --with-mailutils \
+              --with-xwidgets \
+              --with-dbus \
+              --with-gif \
+              --with-modules \
+              --with-tree-sitter \
+              --with-pgtk --with-selinux --with-sqlite3 --with-threads  --with-webp --with-zlib
+#+end_src
+to generate the Makefile. You'll have to install the appropriate dependencies
+which vary from distro to distro. The configure script should tell you what to
+install.
+
+Lastly, I compile and install
+#+begin_src sh
+  make -j$(nproc) && sudo make install
+#+end_src
