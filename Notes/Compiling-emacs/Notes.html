@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How I Compile Emacs From Source</title>
+<meta name="generator" content="Org mode">
+
+      <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+<header id="" class="status">
+
+              <nav>
+                  <a href="/">Home</a>
+                  <a href="/contact.html">Contact me</a>
+                  <a href="/Notes/">Notes</a>
+                  <a href="/Projects/">Projects</a>
+              </nav>
+              <h1>How I Compile Emacs From Source</h1>
+</header>
+<main id="">
+<p>
+Since I'm a Linux user, this is how I compile Emacs on Linux.
+First I make sure I have git installed, then I clone the repo with:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">git clone https://git.savannah.gnu.org/git/emacs.git &amp;&amp; <span style="font-weight: bold;">cd</span> emacs
+</pre>
+</div>
+<p>
+I then run
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">./autogen.sh
+</pre>
+</div>
+<p>
+to generate the configure script(s), then
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">./configure --with-native-compilation <span style="font-style: italic;">\</span>
+            --with-gnutls <span style="font-style: italic;">\</span>
+            --with-imagemagick <span style="font-style: italic;">\</span>
+            --with-jpeg <span style="font-style: italic;">\</span>
+            --with-png <span style="font-style: italic;">\</span>
+            --with-rsvg <span style="font-style: italic;">\</span>
+            --with-tiff <span style="font-style: italic;">\</span>
+            --with-wide-int <span style="font-style: italic;">\</span>
+            --with-xft <span style="font-style: italic;">\</span>
+            --with-xml2 <span style="font-style: italic;">\</span>
+            --with-xpm <span style="font-style: italic;">\</span>
+            --with-json <span style="font-style: italic;">\</span>
+            --with-cairo <span style="font-style: italic;">\</span>
+            --with-mailutils <span style="font-style: italic;">\</span>
+            --with-xwidgets <span style="font-style: italic;">\</span>
+            --with-dbus <span style="font-style: italic;">\</span>
+            --with-gif <span style="font-style: italic;">\</span>
+            --with-modules <span style="font-style: italic;">\</span>
+            --with-tree-sitter <span style="font-style: italic;">\</span>
+            --with-pgtk --with-selinux --with-sqlite3 --with-threads  --with-webp --with-zlib
+</pre>
+</div>
+<p>
+to generate the Makefile. You'll have to install the appropriate dependencies
+which vary from distro to distro. The configure script should tell you what to
+install.
+</p>
+
+<p>
+Lastly, I compile and install
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">make -j$(nproc) &amp;&amp; sudo make install
+</pre>
+</div>
+</main>
+<footer id="" class="status">
+
+              Created with: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)
+</footer>
+</body>
+</html>

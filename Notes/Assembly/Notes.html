@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>x86 Assembly Notes</title>
+<meta name="generator" content="Org mode">
+
+      <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+<header id="" class="status">
+
+              <nav>
+                  <a href="/">Home</a>
+                  <a href="/contact.html">Contact me</a>
+                  <a href="/Notes/">Notes</a>
+                  <a href="/Projects/">Projects</a>
+              </nav>
+              <h1>x86 Assembly Notes</h1>
+</header>
+<main id="">
+
+<div id="outline-container-org0400972" class="outline-2">
+<h2 id="org0400972">Data Accessing methods</h2>
+<div class="outline-text-2" id="text-org0400972">
+</div>
+<div id="outline-container-orgbffe69b" class="outline-4">
+<h4 id="orgbffe69b">Immediate Mode</h4>
+<div class="outline-text-4" id="text-orgbffe69b">
+<p>
+The data to access is embedded in the instruction.
+Example:
+<code>movl $0 %eax</code> &lt;&#x2014; Move the literal number zero into register <code>eax</code>
+</p>
+</div>
+</div>
+<div id="outline-container-org398c748" class="outline-4">
+<h4 id="org398c748">register addressing mode</h4>
+<div class="outline-text-4" id="text-org398c748">
+<p>
+The instruction contains a register to access
+</p>
+</div>
+</div>
+<div id="outline-container-orgbdc1671" class="outline-4">
+<h4 id="orgbdc1671">Memory Access Modes</h4>
+<div class="outline-text-4" id="text-orgbdc1671">
+</div>
+<ul class="org-ul">
+<li><a id="org6dd75bf"></a>Direct Addressing Mode<br>
+<div class="outline-text-5" id="text-org6dd75bf">
+<p>
+The instruction contains the memory address to access.
+Example:
+<code>movl 202 %eax</code> &lt;&#x2014; word starting at address 202 into register <code>eax</code>
+</p>
+</div>
+</li>
+<li><a id="org8020d1b"></a>Indexed Addressing Mode<br>
+<div class="outline-text-5" id="text-org8020d1b">
+<p>
+Like <code>Direct Addressing Mode</code>, where an address is given, but an index register
+is also specified to offset the address.
+<b>On x86 processors, you can also specify a multiplier</b>
+</p>
+</div>
+</li>
+<li><a id="orgb0ddbd9"></a>Indirect Addressing Mode<br>
+<div class="outline-text-5" id="text-orgb0ddbd9">
+<p>
+The instruction contains a register that holds a memory address to access.
+Example:
+<code>movl (%esp) %eax</code> &lt;&#x2014; Grabs the data at the memory address held in <code>esp</code>
+</p>
+</div>
+</li>
+<li><a id="org2a895e2"></a>Base Pointer Addressing Mode<br>
+<div class="outline-text-5" id="text-org2a895e2">
+<p>
+Like <code>Indirect Addressing Mode</code>, but with an offset also given.
+Example:
+<code>movl 4(%esp) %eax</code> &lt;&#x2014; Adds 4 to the address in <code>esp</code> then fetches that data in memory.
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4f7aae4" class="outline-2">
+<h2 id="org4f7aae4">Calling Convention</h2>
+<div class="outline-text-2" id="text-org4f7aae4">
+<p>
+The way variables are stored, parameters are passed, and return values are transferred.
+This varies from language to language.
+One can use any calling convention when programming in Assembly.
+The programmer can even come up with their own calling convention
+</p>
+
+<p>
+<b>Linux uses the C calling conventions</b>
+</p>
+</div>
+<div id="outline-container-orgb47909f" class="outline-3">
+<h3 id="orgb47909f">interoperability</h3>
+<div class="outline-text-3" id="text-orgb47909f">
+<p>
+Other languages can have interoperability with assembly functions.
+In order for this to work though, the language's calling convention
+has to be used with the Assembly functions.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6267d71" class="outline-2">
+<h2 id="org6267d71">C calling convention</h2>
+<div class="outline-text-2" id="text-org6267d71">
+<p>
+In the C calling convention, the <code>stack</code> is used heavily to hold function information.
+The <code>stack</code> holds:
+</p>
+<ul class="org-ul">
+<li>local variables</li>
+<li>parameters</li>
+<li>return address</li>
+</ul>
+</div>
+<div id="outline-container-org1915066" class="outline-3">
+<h3 id="org1915066">The Stack</h3>
+<div class="outline-text-3" id="text-org1915066">
+<p>
+The stack lives at the very top addresses of memory, and grows down
+Things can be pushed onto the stack with <code>pushl</code> and <code>popl</code>, where "l" is presumably for "long"
+</p>
+</div>
+<div id="outline-container-orgab7f63f" class="outline-4">
+<h4 id="orgab7f63f">Stack registers</h4>
+<div class="outline-text-4" id="text-orgab7f63f">
+<ul class="org-ul">
+<li><code>%esp</code>: holds a pointer to the top of the stack, starting at the highest address</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgabf2675" class="outline-4">
+<h4 id="orgabf2675">Pushing and popping</h4>
+<div class="outline-text-4" id="text-orgabf2675">
+<p>
+When we push onto the stack, <code>%esp</code> gets subtracted by 4 (stack grows down)
+When we pop from the stack, <code>%esp</code> gets added by 4
+</p>
+</div>
+</div>
+<div id="outline-container-org548ccb9" class="outline-4">
+<h4 id="org548ccb9">Calling functions</h4>
+<div class="outline-text-4" id="text-org548ccb9">
+<p>
+Before executing a function, all the parameters are pushed onto the stack
+in reverse order. 
+Afterwards, The call instruction is issued which indicates which function
+will be executed, the address of the next instruction is pushed onto the
+stack (the return address), and the instruction pointer (<code>%eip</code>) is modified
+to point to the start of the function.
+</p>
+
+<p>
+Here's the Stack so far:
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Stack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Parameter #N</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Parameter 2</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Parameter 1</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Return Address  &lt;&#x2014; (%esp)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The function still has some work to do:
+</p>
+<ul class="org-ul">
+<li>Save the current base pointer register (<code>%ebp</code>) onto the stack.
+The <code>%ebp</code> register is used to access parameters and local variables.
+We don't want to overwrite it if there was something previously there, so
+it gets "backed up" somewhere else.</li>
+<li><p>
+Copy the stack pointer to <code>%ebp</code> (<code>movl %esp %ebp</code>)
+This lets you use the base pointer as a sort of index to access the parameters.
+Using the stack pointer isn't recommended, as the stack may change as things are
+pushed and popped onto it (Like pushing arguments to other functions).
+Copying the stack pointer at the start of every function makes it so you always know
+where your function parameters are (As well as local variables).
+</p>
+
+<p>
+The stack now looks like this:
+</p></li>
+</ul>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Stack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Parameter #N    &lt;&#x2014; N*4+4(%ebp)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Parameter 2     &lt;&#x2014; 12(%ebp)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Parameter 1     &lt;&#x2014; 8(%ebp)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Return Address  &lt;&#x2014; 4(%ebp)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Old %ebp        &lt;&#x2014; (%esp) and (%ebp)</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+The function then reserves space on the stack for any local variables.
+This is done by moving the stack pointer down a certain number of bytes.
+Let's say we wanted to reserve 8 bytes for local variables.
+We can do that by just <code>subl $8 %esp</code>.
+This is done so we don't have to worry about clobbering them with pushes for
+function calls.
+<b><b>All of this is being done on the function's stack frame, so when it returns, all the variables will cease to exist</b></b>
+</p>
+
+<p>
+The stack now looks like this:
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Stack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Parameter #N      &lt;&#x2014; N*4+4(%ebp)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Parameter 2       &lt;&#x2014; 12(%ebp)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Parameter 1       &lt;&#x2014; 8(%ebp)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Return Address    &lt;&#x2014; 4(%ebp)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Old %ebp          &lt;&#x2014; (%ebp)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Local Variable 1  &lt;&#x2014; -4(%ebp)</td>
+</tr>
+
+<tr>
+<td class="org-left">Local Variable 2  &lt;&#x2014; -8(%ebp) and (%esp)</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+All the data can be accessed using <code>base pointer addressing</code>, and using different
+offsets from <code>%ebp</code>.
+<code>%ebp</code> <b>exists for this exact purpose</b>
+Other registers can be used for <code>base pointer addressing</code>, but x86 architecture makes using
+<code>%ebp</code> really fast.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org02793dd" class="outline-3">
+<h3 id="org02793dd">returning from the function</h3>
+<div class="outline-text-3" id="text-org02793dd">
+<p>
+When a function is done executing, it has to:
+</p>
+<ol class="org-ol">
+<li>Store the return value in <code>%eax</code>.</li>
+<li>Restore the stack to what it looked like previously</li>
+<li>Return control back to wherever it was called from.
+This is done using the <code>ret</code> instruction, which pops
+whatever was at the top of the stack, and sets the <code>%eip</code>
+register to that value (the address of the instruction after <code>call</code>).</li>
+</ol>
+<p>
+This all has to be done in that exact order for everything to work properly.
+If the stack wasn't restored before <code>ret</code>, <code>ret</code> wouldn't function properly.
+</p>
+
+<p>
+So to return, the following must be done:
+</p>
+<div class="org-src-container">
+<pre class="src src-asm"><span style="font-weight: bold;">movl</span> <span style="font-weight: bold;">%ebp</span>, <span style="font-weight: bold; font-style: italic;">%esp</span> # Have the stack pointer (esp) point to where ebp is pointing
+<span style="font-weight: bold;">popl</span> <span style="font-weight: bold;">%ebp</span>
+<span style="font-weight: bold;">ret</span>
+</pre>
+</div>
+<p>
+You should consider all local variables inaccessible, as future stack pushes will overwrite them.
+Let's look at this visually.
+</p>
+
+<p>
+<code>movl %ebp, %esp</code>:
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Stack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Parameter #N      &lt;&#x2014; N*4+4(%ebp)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Parameter 2       &lt;&#x2014; 12(%ebp)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Parameter 1       &lt;&#x2014; 8(%ebp)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Return Address    &lt;&#x2014; 4(%ebp)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Old %ebp          &lt;&#x2014; (%ebp) and (%esp)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Local Variable 1  &lt;&#x2014; -4(%ebp)</td>
+</tr>
+
+<tr>
+<td class="org-left">Local Variable 2  &lt;&#x2014; -8(%ebp)</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+<code>popl %ebp</code>:
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Stack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Parameter #N</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Parameter 2</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Parameter 1</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Return Address    &lt;&#x2014; (%esp)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Local Variable 1</td>
+</tr>
+
+<tr>
+<td class="org-left">Local Variable 2</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+Here, the <code>Old %ebp</code> value that was on the stack is popped, and placed back into <code>%ebp</code>.
+And since we ran <code>popl</code>, <code>%esp</code> now points to the return address. We can finally execute the <code>ret</code>
+instruction.
+</p>
+
+<p>
+<b>Once out of the function, the parameters need to be popped off</b>
+</p>
+</div>
+</div>
+</div>
+</main>
+<footer id="" class="status">
+
+              Created with: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)
+</footer>
+</body>
+</html>
