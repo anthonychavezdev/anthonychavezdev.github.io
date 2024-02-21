@@ -72,7 +72,7 @@ install.
 Lastly, I compile and install
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">make -j$(nproc) &amp;&amp; sudo make install
+<pre class="src src-sh">make <span style="font-weight: bold; font-style: italic;">NATIVE_FULL_AOT</span>=1 -j$(nproc) &amp;&amp; sudo make install
 </pre>
 </div>
 </main>
