@@ -39,5 +39,5 @@ install.
 
 Lastly, I compile and install
 #+begin_src sh
-  make -j$(nproc) && sudo make install
+  make NATIVE_FULL_AOT=1 -j$(nproc) && sudo make install
 #+end_src
