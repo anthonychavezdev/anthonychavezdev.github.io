@@ -1,6 +1,19 @@
 #+TITLE: Projects
 
 * Computing
+** Compilation
+   #+begin_export html
+   <details>
+   <summary>bfjit</summary>
+   <p>
+   I wrote a JIT compiler for the bf programming language.
+   It takes in a program as input, generates CPU instructions on the fly,
+   and executes them, giving a big speed boost when compared to the interpreter.
+   <a href="https://github.com/anthonychavezdev/bfjit">GitHub</a>
+   </p>
+   <img src="../assets/bfjit.png">
+   </details>
+   #+end_export
 ** Emulation
    #+begin_export html
    <details>
