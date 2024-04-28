@@ -26,6 +26,7 @@
 
      <a href="https://github.com/anthonychavezdev/chip8">GitHub</a>
      </p>
+     <img src="../assets/chip8.png">
    </details>
    #+end_export
 ** Raspberry Pi
