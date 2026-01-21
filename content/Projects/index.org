@@ -89,3 +89,18 @@
      </p>
    </details>
    #+end_export
+   #+begin_export html
+   <details>
+     <summary>Web Brower Extension</summary>
+     <p>
+       I wrote a browser extension to lookup the definition of a highlighted word
+       and have the definition appear in a popup window. This is a feature
+       I really liked from MacOS, that I decided to bring over something similar.
+       <a href="https://github.com/anthonychavezdev/definition-lookup-browser-extension">Github</a>
+     </p>
+     <video width="640" height="480" controls>
+       <source src="https://github.com/user-attachments/assets/ec769966-8a98-427f-85e2-a10246e6b260" type="video/mp4">
+       The video isn't supported in your browser. Try a different one.
+     </video>
+   </details>
+   #+end_export
