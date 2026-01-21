@@ -22,13 +22,13 @@
 </header>
 <main id="" class="content">
 
-<div id="outline-container-org6988e19" class="outline-2">
-<h2 id="org6988e19">Data Accessing methods</h2>
-<div class="outline-text-2" id="text-org6988e19">
+<div id="outline-container-org8846d9d" class="outline-2">
+<h2 id="org8846d9d">Data Accessing methods</h2>
+<div class="outline-text-2" id="text-org8846d9d">
 </div>
-<div id="outline-container-org02c349e" class="outline-4">
-<h4 id="org02c349e">Immediate Mode</h4>
-<div class="outline-text-4" id="text-org02c349e">
+<div id="outline-container-org26a62fd" class="outline-4">
+<h4 id="org26a62fd">Immediate Mode</h4>
+<div class="outline-text-4" id="text-org26a62fd">
 <p>
 The data to access is embedded in the instruction.
 Example:
@@ -36,21 +36,21 @@ Example:
 </p>
 </div>
 </div>
-<div id="outline-container-orgd935591" class="outline-4">
-<h4 id="orgd935591">register addressing mode</h4>
-<div class="outline-text-4" id="text-orgd935591">
+<div id="outline-container-org636eeb9" class="outline-4">
+<h4 id="org636eeb9">register addressing mode</h4>
+<div class="outline-text-4" id="text-org636eeb9">
 <p>
 The instruction contains a register to access
 </p>
 </div>
 </div>
-<div id="outline-container-org0ceee36" class="outline-4">
-<h4 id="org0ceee36">Memory Access Modes</h4>
-<div class="outline-text-4" id="text-org0ceee36">
+<div id="outline-container-org2d998fa" class="outline-4">
+<h4 id="org2d998fa">Memory Access Modes</h4>
+<div class="outline-text-4" id="text-org2d998fa">
 </div>
 <ul class="org-ul">
-<li><a id="org2a9e16b"></a>Direct Addressing Mode<br>
-<div class="outline-text-5" id="text-org2a9e16b">
+<li><a id="org95ec359"></a>Direct Addressing Mode<br>
+<div class="outline-text-5" id="text-org95ec359">
 <p>
 The instruction contains the memory address to access.
 Example:
@@ -58,8 +58,8 @@ Example:
 </p>
 </div>
 </li>
-<li><a id="org7076919"></a>Indexed Addressing Mode<br>
-<div class="outline-text-5" id="text-org7076919">
+<li><a id="org86bc1f6"></a>Indexed Addressing Mode<br>
+<div class="outline-text-5" id="text-org86bc1f6">
 <p>
 Like <code>Direct Addressing Mode</code>, where an address is given, but an index register
 is also specified to offset the address.
@@ -67,8 +67,8 @@ is also specified to offset the address.
 </p>
 </div>
 </li>
-<li><a id="org7c11b07"></a>Indirect Addressing Mode<br>
-<div class="outline-text-5" id="text-org7c11b07">
+<li><a id="org1cc7a84"></a>Indirect Addressing Mode<br>
+<div class="outline-text-5" id="text-org1cc7a84">
 <p>
 The instruction contains a register that holds a memory address to access.
 Example:
@@ -76,8 +76,8 @@ Example:
 </p>
 </div>
 </li>
-<li><a id="org8e3fb7f"></a>Base Pointer Addressing Mode<br>
-<div class="outline-text-5" id="text-org8e3fb7f">
+<li><a id="org852d313"></a>Base Pointer Addressing Mode<br>
+<div class="outline-text-5" id="text-org852d313">
 <p>
 Like <code>Indirect Addressing Mode</code>, but with an offset also given.
 Example:
@@ -88,9 +88,9 @@ Example:
 </ul>
 </div>
 </div>
-<div id="outline-container-org6a55077" class="outline-2">
-<h2 id="org6a55077">Calling Convention</h2>
-<div class="outline-text-2" id="text-org6a55077">
+<div id="outline-container-org233fdbe" class="outline-2">
+<h2 id="org233fdbe">Calling Convention</h2>
+<div class="outline-text-2" id="text-org233fdbe">
 <p>
 The way variables are stored, parameters are passed, and return values are transferred.
 This varies from language to language.
@@ -102,9 +102,9 @@ The programmer can even come up with their own calling convention
 <b>Linux uses the C calling conventions</b>
 </p>
 </div>
-<div id="outline-container-orge64c774" class="outline-3">
-<h3 id="orge64c774">interoperability</h3>
-<div class="outline-text-3" id="text-orge64c774">
+<div id="outline-container-orgb8154f6" class="outline-3">
+<h3 id="orgb8154f6">interoperability</h3>
+<div class="outline-text-3" id="text-orgb8154f6">
 <p>
 Other languages can have interoperability with assembly functions.
 In order for this to work though, the language's calling convention
@@ -114,9 +114,9 @@ has to be used with the Assembly functions.
 </div>
 </div>
 
-<div id="outline-container-org76fe205" class="outline-2">
-<h2 id="org76fe205">C calling convention</h2>
-<div class="outline-text-2" id="text-org76fe205">
+<div id="outline-container-org718e933" class="outline-2">
+<h2 id="org718e933">C calling convention</h2>
+<div class="outline-text-2" id="text-org718e933">
 <p>
 In the C calling convention, the <code>stack</code> is used heavily to hold function information.
 The <code>stack</code> holds:
@@ -127,34 +127,34 @@ The <code>stack</code> holds:
 <li>return address</li>
 </ul>
 </div>
-<div id="outline-container-org8b3b408" class="outline-3">
-<h3 id="org8b3b408">The Stack</h3>
-<div class="outline-text-3" id="text-org8b3b408">
+<div id="outline-container-org5685698" class="outline-3">
+<h3 id="org5685698">The Stack</h3>
+<div class="outline-text-3" id="text-org5685698">
 <p>
 The stack lives at the very top addresses of memory, and grows down
 Things can be pushed onto the stack with <code>pushl</code> and <code>popl</code>, where "l" is presumably for "long"
 </p>
 </div>
-<div id="outline-container-org0416189" class="outline-4">
-<h4 id="org0416189">Stack registers</h4>
-<div class="outline-text-4" id="text-org0416189">
+<div id="outline-container-orgd23f6a4" class="outline-4">
+<h4 id="orgd23f6a4">Stack registers</h4>
+<div class="outline-text-4" id="text-orgd23f6a4">
 <ul class="org-ul">
 <li><code>%esp</code>: holds a pointer to the top of the stack, starting at the highest address</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9fee8f1" class="outline-4">
-<h4 id="org9fee8f1">Pushing and popping</h4>
-<div class="outline-text-4" id="text-org9fee8f1">
+<div id="outline-container-org39cce88" class="outline-4">
+<h4 id="org39cce88">Pushing and popping</h4>
+<div class="outline-text-4" id="text-org39cce88">
 <p>
 When we push onto the stack, <code>%esp</code> gets subtracted by 4 (stack grows down)
 When we pop from the stack, <code>%esp</code> gets added by 4
 </p>
 </div>
 </div>
-<div id="outline-container-orgb762ef5" class="outline-4">
-<h4 id="orgb762ef5">Calling functions</h4>
-<div class="outline-text-4" id="text-orgb762ef5">
+<div id="outline-container-org35f7b34" class="outline-4">
+<h4 id="org35f7b34">Calling functions</h4>
+<div class="outline-text-4" id="text-org35f7b34">
 <p>
 Before executing a function, all the parameters are pushed onto the stack
 in reverse order. 
@@ -334,9 +334,9 @@ Other registers can be used for <code>base pointer addressing</code>, but x86 ar
 </div>
 </div>
 </div>
-<div id="outline-container-org1aee71e" class="outline-3">
-<h3 id="org1aee71e">returning from the function</h3>
-<div class="outline-text-3" id="text-org1aee71e">
+<div id="outline-container-org079385c" class="outline-3">
+<h3 id="org079385c">returning from the function</h3>
+<div class="outline-text-3" id="text-org079385c">
 <p>
 When a function is done executing, it has to:
 </p>
