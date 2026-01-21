@@ -3,9 +3,14 @@
 * About me
   [[file:assets/bitmoji-closed-smile.png]]
 
-  My name is Anthony, I am a 25 year old Software Engineer with a bachelors in Computer Science.
-  I love computers, programming, rock climbing, anime, and astronomy.
-  I go hiking a few times a year with friends, I'm learning guitar, and I'm learning various technology stacks!
+  My name is Anthony, I am a 27 year old Software Engineer working for Discover Financial Services.
+  I love computers, programming, rock climbing, anime, astronomy, math, and science!
+  I go hiking a few times a year with friends, I'm learning guitar, and I enjoy tinkering with unique technologies.
+  I like messing around with:
+  - Emacs
+  - Common Lisp
+  - Ocaml
+  - Nix and NixOS
 
 * Links
   @@html: <a href="https://github.com/anthonychavezdev" style="font-size: 3rem; text-decoration: none;" class="fa fa-github"></a>@@
