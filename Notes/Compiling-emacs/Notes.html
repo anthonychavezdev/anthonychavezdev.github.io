@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How I Compile Emacs From Source</title>
-<meta name="generator" content="Org mode">
+<meta name="generator" content="Org Mode" />
 
       <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -20,7 +20,7 @@
               </nav>
               <h1>How I Compile Emacs From Source</h1>
 </header>
-<main id="">
+<main id="" class="content">
 <p>
 Since I'm a Linux user, this is how I compile Emacs on Linux.
 First I make sure I have git installed, then I clone the repo with:
@@ -72,13 +72,13 @@ install.
 Lastly, I compile and install
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">make <span style="font-weight: bold; font-style: italic;">NATIVE_FULL_AOT</span>=1 -j$(nproc) &amp;&amp; sudo make install
+<pre class="src src-sh">make <span style="font-weight: bold; font-style: italic;">NATIVE_FULL_AOT</span>=1 -j$(<span style="font-weight: bold;">nproc</span>) &amp;&amp; sudo make install
 </pre>
 </div>
 </main>
 <footer id="" class="status">
 
-              Created with: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)
+              Created with: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.3 (<a href="https://orgmode.org">Org</a> mode 9.6.15)
 </footer>
 </body>
 </html>
