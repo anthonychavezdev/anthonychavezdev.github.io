@@ -58,6 +58,17 @@
 ** Video Games
    #+begin_export html
    <details>
+     <summary>Breakout for the Gameboy</summary>
+     <p>
+       I'm learning Gameboy Assemly / Game Programming. Starting out with this Breakout clone.
+     </p>
+     <video width="640" height="480" controls>
+       <source src="https://github.com/user-attachments/assets/b630549e-ce2b-4da6-82cb-6a08d19124af" type="video/mp4">
+       The video isn't supported in your browser. Try a different one.
+     </video>
+   </details>
+
+   <details>
      <summary>Pypong</summary>
      <p>
      A pong clone written in Python and Pygame.
