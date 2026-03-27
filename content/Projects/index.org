@@ -19,14 +19,17 @@
    <details>
      <summary>Chip8</summary>
      <p>
-     I wrote a Chip 8 emulator in C that
-     can play Chip 8 ROMS, draw graphics to
-     the screen, and read keyboard input.
-     The only feature it's lacking, is sound.
+       I wrote a Chip 8 emulator in C that
+       can play Chip 8 ROMS, draw graphics to
+       the screen, and read keyboard input.
+       The only feature it's lacking, is sound.
 
-     <a href="https://github.com/anthonychavezdev/chip8">GitHub</a>
+       <a href="https://github.com/anthonychavezdev/chip8">GitHub</a>
      </p>
-     <img src="../assets/chip8.png">
+     <video width="640" height="480" controls>
+       <source src="https://github.com/user-attachments/assets/81ad3956-7668-4535-a492-da07144af85a" type="video/mp4">
+       The video isn't supported in your browser. Try a different one.
+     </video>
    </details>
    #+end_export
 ** Raspberry Pi
